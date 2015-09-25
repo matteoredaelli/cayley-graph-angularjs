@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<!-- load up our app -->
+<script src="app/app.js"></script>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>pGraph</title>
+  <meta name="description" content="">
+  <meta name="author" content="Matteo Redaelli">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+
+</head>
+
+<body ng-app="myApp" ng-controller="planetController">
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container"> 
+     <img src="http://mysite.com/logo.gif">myGraph</img>
+
+     <!-- The above form looks like this -->
+     <form>
+       <div class="row">
+         <div class="six columns">
+           <input ng-model="query" class="u-full-width" placeholder="insert a node" type="text">
+         </div>
+
+         <div class="six columns">
+            <button ng-click="searchV(query)" class="button-primary">search</button>
+         </div>
+       </div>
+     </form>
+
+     <div class="row">
+       <div>
+         <table>
+            <thead>
+              <tr>
+                <th>From</th>
+                <th>Predicate</th>
+                <th>To</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="x in input_nodes.data.result">
+                <td><button ng-click="searchV(x.id)" class="button-primary">{{x.id}}</button></td>
+                <td>{{x.predicate}}</td>
+                <td>{{query}}</td>
+              </tr>
+              <tr ng-repeat="x in output_nodes.data.result">
+                <td>{{query}}</td>
+                <td>{{x.predicate}}</td>
+                <td><button ng-click="searchV(x.id)" class="button-primary">{{x.id}}</button></td>
+              </tr>
+          </tbody>
+        </table>
+       </div>
+
+     </div> <!-- row !>>
+
+</body>
+</html>
+
